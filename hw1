@@ -1,0 +1,80 @@
+import mysql.connector
+from mysql.connector import Error
+
+# display the menu
+
+def menu():
+    print('MENU')
+    print('a - Add fish')
+    print('o - Output all fish in console')
+    print('q - Quit')
+
+
+# reads the choice
+
+def rChoice():
+    choice = input('Enter your choice: ')
+    return choice
+
+# connect python with mysql
+
+def create_con(hostname, username, userpw, dbname):
+    connection = None
+    try:
+        connection = mysql.connector.connect(
+            host=hostname,
+            user=username,
+            password=userpw,
+            database=dbname
+        )
+        print("connection successful")
+    except Error as e:
+        print(f'the error {e} occured')
+    return connection
+
+conn = create_con('cis3368spring.cvg64vdcuqto.us-east-1.rds.amazonaws.com', 'admin', 'Iloveschool2000!', 'cis3368springdb')
+cursor = conn.cursor(dictionary = True)
+
+
+# inserting rows into mysql or 'add fish'
+
+def insert_row():
+    id = int(input('Enter id: ')) # I know we were supposed to auto increment id but if i dont put this in here, my whole program crashes
+    superclass = input('Enter fish superclass: ')
+    species = input('Enter fish species: ')
+    color = input('Enter fish color: ')
+    acquired = int(input('Enter the amount acquired: '))
+    alive = input('Are the fish alive? yes or no: ')
+    conn = create_con('cis3368spring.cvg64vdcuqto.us-east-1.rds.amazonaws.com', 'admin', 'Iloveschool2000!', 'cis3368springdb')
+    cursor = conn.cursor(dictionary = True)
+    strSQL = "INSERT INTO fish VALUES (%s, %s, %s, %s, %s,%s);"
+    v = (id, superclass, species, color, acquired, alive)
+    cursor.execute(strSQL, v)
+    conn.commit()
+    conn.close()
+
+# display sql table in terminal or 'output all fish in console'
+
+def show_table():
+    conn = create_con('cis3368spring.cvg64vdcuqto.us-east-1.rds.amazonaws.com', 'admin', 'Iloveschool2000!', 'cis3368springdb')
+    cursor = conn.cursor(dictionary = True)
+    strSQL = "SELECT * FROM fish"
+    cursor.execute(strSQL)
+    row = cursor.fetchall()
+    print(row)
+    conn.close()
+
+# main function
+
+while True:
+    menu()
+    choice = rChoice()
+    if choice == 'a':
+        insert_row()
+    elif choice == 'o':
+        show_table()
+    elif choice == 'q':
+        print('You have quit the menu')
+        break
+    else: 
+        print('Please try another choice')
