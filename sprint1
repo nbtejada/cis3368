@@ -168,7 +168,7 @@ def add_new_cargo():
     insert_new_cargo = "INSERT INTO cargo(weight, cargotype, shipid) VALUES (%s,'%s', %s) " % (new_weight, new_cargotype, ship_id)
     execute_query(conn, insert_new_cargo) 
 
-# tried this loop for adding max number of cargos to ship 
+# tried this loop for adding max number of cargos to ship but did not work
     # for insert_new_cargo in add_new_cargo:
     #     if insert_new_cargo[new_weight] < add_new_spaceship:
     #         sum = sum + insert_new_cargo
