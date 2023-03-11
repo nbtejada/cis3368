@@ -5,10 +5,34 @@ from sql import create_connection
 from sql import execute_read_query
 from sql import execute_query
 import creds
+import hashlib
+from flask import request, make_response
 
 # setting up an application name
 app = flask.Flask(__name__) # sets up the application
 app.config["DEBUG"] = True # allow to show errors in browser
+
+# setting up the login page 
+# creating a list to store username and passwords
+authorizedspaceman = [
+    {
+        # default user
+        'username': 'Space',
+        'password': 'Galaxy' 
+    },
+]
+
+@app.route('/api/usernamepw', methods=['GET'])
+def usernamepw_example():
+    username = request.headers['username'] # asking for username and password that is entered on postman in the headers
+    pw = request.headers['password']
+    for au in authorizedspaceman: # find the matching user if exists the authorized table list above
+        if au['username'] == username and au['password'] == pw: # if the username and password match then the login is successful
+            return 'Login Successful'
+
+    return 'LOGIN ERROR' # If the username and/or password is incorrect return an error
+
+
 
 # GET API Captain - to view entire captain table 
 @app.route('/api/captain/all') # Api to read all of the rows that ate in the captain table
@@ -70,11 +94,15 @@ def update_captain():
 # GET API Spaceship - to view entire spaceship table 
 @app.route('/api/spaceship/all') # Api to read all of the rows that are in the spaceship table 
 def api_all_spaceships():
+    
+    request_data = request.get_json()
+    cargotoadd = request_data['weight']
+
     myCreds = creds.Creds()
     conn = create_connection(myCreds.conString, myCreds.userName, myCreds.password, myCreds.dbName)
-    view_spaceships= "SELECT * FROM spaceship"
-    ships = execute_read_query(conn, view_spaceships)
-    return jsonify(ships)
+    view_ship= "SELECT * FROM spaceship WHERE maxweight >= %s" % (cargotoadd)  # select where maxweight is greater than or equal to the maxweight
+    ships = execute_read_query(conn, view_ship)
+    return jsonify(ships) # Api to read all of the rows that are in the spaceship table 
 
 # POST API Spaceship - to add a spaceship
 @app.route('/api/spaceship', methods = ['POST']) # API to add new rows into the spaceship table
@@ -136,9 +164,14 @@ def add_new_cargo():
 
     myCreds = creds.Creds()
     conn = create_connection(myCreds.conString, myCreds.userName, myCreds.password, myCreds.dbName)
-    
-    insert_new_cargo = "INSERT INTO cargo(weight, cargotype, shipid) VALUES (%s,'%s', %s)" % (new_weight, new_cargotype, ship_id)
+
+    insert_new_cargo = "INSERT INTO cargo(weight, cargotype, shipid) VALUES (%s,'%s', %s) " % (new_weight, new_cargotype, ship_id)
     execute_query(conn, insert_new_cargo) 
+
+# tried this loop for adding max number of cargos to ship 
+    # for insert_new_cargo in add_new_cargo:
+    #     if insert_new_cargo[new_weight] < add_new_spaceship:
+    #         sum = sum + insert_new_cargo
 
     return "New Cargo Successfully Added to Cargo Table"
 
