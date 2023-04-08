@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Random Users and Workplaces</title>
+  </head>
+  <body>
+    <h1>Random Users and Workplaces</h1>
+    <button onclick="window.location.reload()">Load</button>
+    <ul>
+      <% for (const user of randomUsers) { %>
+        <li>
+          <label>Name: <%= user.name %></label>
+          <label>City: <%= user.city %></label>
+          <label>Company: <%= user.company %></label>
+        </li>
+      <% } %>
+    </ul>
+  </body>
+  </html>
