@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <form action="/" method="post">
+        <div class="jumbotron" style="background-color:#E0E0E0">
+            <p><%= locals.tagline %></p>
+            <ul>
+                <% if (locals.captain) { %>
+
+
+                    <% locals.captain.forEach(function(captain) { %>
+                        <li>
+                            <strong>Captain Rank: <%= captain.captain_rank %></strong>
+                            <br>
+                            First Name: <%= captain.firstname %>
+                            <br> 
+                            <br>
+                            Last Name: <%= captain.lastname %>
+                            <br>
+                            <br>
+                            Home Planet: <%= captain.homeplate %>
+                            <br>
+                        </li>
+                    <% }); %>
+                   
+                <% } %>
+                
+            </ul>
+           
+        </div>
+
+</div>

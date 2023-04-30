@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <form action="/thanks" method="post">
+        <div class="jumbotron" style="background-color:#E0E0E0">
+            <p><%= locals.tagline %></p>
+            <ul>
+                <% if (locals.cargo) { %>
+
+                    <% locals.cargo.forEach(function(cargo) { %>
+                        <li>
+                            <strong>Cargo Type: <%= cargo.cargotype %></strong>
+                            <br>
+                            Arrival Date: <%= cargo.arrival %>
+                            <br> 
+                            Departure Date : <%= cargo.departure %>
+                            <br>
+                            Cargo Weight: <%= cargo.weight %>
+                        </li>
+                    <% }); %>
+                   
+                <% } %>
+                
+            </ul>
+            <button type="nav-item" class="btn btn-primary btn-rounded">
+                <a class="nav-link" href="/choose" style="color:white">Manage Cargo</a>
+            </button>
+        </div>
+
+</div>
+
+
+
+
+
+</main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

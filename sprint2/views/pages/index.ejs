@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container" style="background-color:#616161">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <form action="/choose" method="post">
+            <div class="jumbotron" style="background-color:#E0E0E0">
+                <h2 style="text-align: center;">Manage Captains!</h2>
+            </div>  
+            
+            <div class="jumbotron" style="background-color:#E0E0E0">
+                <strong>Add a Captain</strong>
+                <br>
+                <div class="col-sm-8">
+                        <div class="input-group">
+                            <span class="input-group-text">First Name:</span>
+                            <input type="text" aria-label="Convert from:" id="from" name="from" class="form-control" placeholder="First Name" required
+                                autofocus>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-text">Last Name:</span>
+                            <input type="text" aria-label="Convert to:" id="to" name="to" class="form-control" placeholder="Last Name" required
+                            autofocus>                  
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-text">Captain Rank:</span>
+                            <input type="text" aria-label="Amount:" id="start" name="start" class="form-control" placeholder="Rank Number" required
+                            autofocus>                  
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-text">Homeplanet:</span>
+                            <input type="text" aria-label="Amount:" id="end" name="end" class="form-control" placeholder="Homeplanet" required
+                            autofocus>                  
+                        </div>
+                        <br>
+                       
+                        <br>
+                        <div class="input-group mb-3">
+                            <button type="reset" class="btn btn-primary btn-rounded">Submit</button>
+                            <% if (locals.converted) { %>
+                                <span class="input-group-text" style="background-color:white">
+                                    <%= converted %>
+                                </span>
+                            <% } %>
+                        </div>
+                    
+                        <div class="input-group mb-3">
+                            <a href="http://127.0.0.1:8080/viewcaptain">
+                                <button type="button" class="btn btn-primary btn-rounded">Click To View All Captains</button>
+                            </a>
+                        </div>
+                </div>
+            </div>
+
+            
+    
+            <div class="jumbotron" style="background-color:#E0E0E0">
+            <strong>Delete a Captain</strong>
+            <br>
+            <div class="col-sm-8">
+                    <div class="input-group">
+                        <span class="input-group-text">First Name: </span>
+                        <input type="text" aria-label="Convert from:" id="from" name="from" class="form-control" placeholder="First Name" 
+                            autofocus>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Last Name:</span>
+                        <input type="text" aria-label="Convert to:" id="to" name="to" class="form-control" placeholder="Last Name" 
+                        autofocus>                  
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Captain Rank:</span>
+                        <input type="text" aria-label="Amount:" id="start" name="start" class="form-control" placeholder="Start date" 
+                        autofocus>                  
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Home Planet:</span>
+                        <input type="text" aria-label="Amount:" id="end" name="end" class="form-control" placeholder="Home Planet" 
+                        autofocus>                  
+                    </div>
+                    <br>
+                    
+                    <br>
+                    <div class="input-group mb-3">
+                        <button type="reset" class="btn btn-primary btn-rounded">Delete</button>
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="jumbotron" style="background-color:#E0E0E0">
+            <strong>Update a Captain</strong>
+            <br>
+            <div class="col-sm-8">
+                    <div class="input-group">
+                        <span class="input-group-text">First Name:</span>
+                        <input type="text" aria-label="Convert from:" id="from" name="from" class="form-control" placeholder="First Name" required
+                            autofocus>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Last Name:</span>
+                        <input type="text" aria-label="Convert to:" id="to" name="to" class="form-control" placeholder="Last Name" required
+                        autofocus>                  
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Captain Rank:</span>
+                        <input type="text" aria-label="Amount:" id="start" name="start" class="form-control" placeholder="Rank Number" required
+                        autofocus>                  
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Home Planet:</span>
+                        <input type="text" aria-label="Amount:" id="end" name="end" class="form-control" placeholder="Home Planet" required
+                        autofocus>                  
+                    </div>
+                    <br>
+                   
+                    <br>
+                    <div class="input-group mb-3">
+                        <button type="reset" class="btn btn-primary btn-rounded">Submit</button>
+                        <% if (locals.converted) { %>
+                            <span class="input-group-text" style="background-color:white">
+                                <%= converted %>
+                            </span>
+                        <% } %>
+                    </div>
+                
+            </div>
+        </div>
+    
+
+
+
+
+
+        </form>
+    </main>
+<!--JS Part-->
+
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+</html>

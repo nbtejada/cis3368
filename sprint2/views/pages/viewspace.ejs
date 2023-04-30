@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <form action="/space" method="get">
+        <div class="jumbotron" style="background-color:#E0E0E0">
+            <p><%= locals.tagline %></p>
+            <ul>
+                <% if (locals.spaceship) { %>
+
+                    <% locals.spaceship.forEach(function(spaceship) { %>
+                        <li>
+                            <strong>Secondary ID: <%= spaceship.sec_ship_id %></strong>
+                            <br>
+                            Max Weight: <%= spaceship.maxweight %>
+                            <br> 
+                        </li>
+                    <% }); %>
+                   
+                <% } %>
+                
+            </ul>
+           
+        </div>
+
+</div>

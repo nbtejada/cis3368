@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container" style="background-color:#616161">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <form action="/space" method="post">
+            <div class="jumbotron" style="background-color:#E0E0E0">
+                <h2 style="text-align: center;">Manage Spaceships!</h2>
+            </div>  
+            
+            <div class="jumbotron" style="background-color:#E0E0E0">
+                <strong>Add a Spaceship: </strong>
+                <br>
+                <div class="col-sm-8">
+                        <div class="input-group">
+                            <span class="input-group-text">Secondary ID:</span>
+                            <input type="text" aria-label="Convert from:" id="from" name="from" class="form-control" placeholder="ID Number" required
+                                autofocus>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-text">Max Weight:</span>
+                            <input type="text" aria-label="Convert to:" id="to" name="to" class="form-control" placeholder=" Max Weight" required
+                            autofocus>                  
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-text">Captain ID:</span>
+                            <input type="text" aria-label="Amount:" id="start" name="start" class="form-control" placeholder="ID Number" required
+                            autofocus>                  
+                        </div>
+                       
+                        <br>
+                        <div class="input-group mb-3">
+                            <button type="reset" class="btn btn-primary btn-rounded">Submit</button>
+                            <% if (locals.converted) { %>
+                                <span class="input-group-text" style="background-color:white">
+                                    <%= converted %>
+                                </span>
+                            <% } %>
+                        </div>
+
+                            <div class="input-group mb-3">
+                                <a href="http://127.0.0.1:8080/viewspace">
+                                    <button type="button" class="btn btn-primary btn-rounded">Click To View Spaceships</button>
+                                </a>
+                            </div>
+                            
+                    
+                </div>
+            </div>
+    
+            <div class="jumbotron" style="background-color:#E0E0E0">
+            <strong>Delete a Spaceship</strong>
+            <br>
+            <div class="col-sm-8">
+                    <div class="input-group">
+                        <span class="input-group-text">Secondary ID: </span>
+                        <input type="text" aria-label="Convert from:" id="from" name="from" class="form-control" placeholder="ID Number" 
+                            autofocus>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Max Weight:</span>
+                        <input type="text" aria-label="Convert to:" id="to" name="to" class="form-control" placeholder="Max Weight" 
+                        autofocus>                  
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Captain ID:</span>
+                        <input type="text" aria-label="Amount:" id="start" name="start" class="form-control" placeholder="ID Number" 
+                        autofocus>                  
+                    </div>
+                
+                    
+                    <br>
+                    <div class="input-group mb-3">
+                        <button type="reset" class="btn btn-primary btn-rounded">Delete</button>
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="jumbotron" style="background-color:#E0E0E0">
+            <strong>Update a Spaceship</strong>
+            <br>
+            <div class="col-sm-8">
+                    <div class="input-group">
+                        <span class="input-group-text">Secondary ID:</span>
+                        <input type="text" aria-label="Convert from:" id="from" name="from" class="form-control" placeholder="ID Number" required
+                            autofocus>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Max Weight:</span>
+                        <input type="text" aria-label="Convert to:" id="to" name="to" class="form-control" placeholder="Max Weight" required
+                        autofocus>                  
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-text">Captain ID:</span>
+                        <input type="text" aria-label="Amount:" id="start" name="start" class="form-control" placeholder="ID Number" required
+                        autofocus>                  
+                    </div>
+                   
+                   
+                    <br>
+                    <div class="input-group mb-3">
+                        <button type="reset" class="btn btn-primary btn-rounded">Submit</button>
+                        <% if (locals.converted) { %>
+                            <span class="input-group-text" style="background-color:white">
+                                <%= converted %>
+                            </span>
+                        <% } %>
+                    </div>
+                
+            </div>
+        </div>
+    
+
+
+
+
+
+        </form>
+    </main>
+<!--JS Part-->
+
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+</html>
